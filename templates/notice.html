@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+    {% block title %}
+        Homepage
+    {% endblock %}
+
+{% block main %} 
+    <div class="hero">
+        <div class="hero-text center">
+            <h1>CMS Noticeboard</h1>
+            <p>keeping you updated bit by bit.</p>
+        </div>
+    </div>
+    <br>
+    <h2 class="center">Notice Board</h2>
+    <br>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Issue date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Notice Summary</th>
+                <th scope="col">Link</th>
+                <th scope="col">Class</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for notice in notices %}
+              <tr>
+                  <td>{{notice["issue_date"]}}</td>
+                  <td>{{notice["time"]}}</td>
+                  <td>{{notice["summary"]}}</td>
+                  <td><a href="{{notice["link"]}}">More Info</a></td>
+                  <td>{{notice["class"]}}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <br>
+
+{% endblock %}

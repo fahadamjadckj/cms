@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+    {% block title %}
+        LOGIN
+    {% endblock %}
+
+{% block main %} 
+    <div>
+        <img src="static/hero.jpg" class="img-fluid" alt="Responsive image">
+    </div>
+    <br>
+    <h2 class="center">LOG IN</h2>
+    <br>
+    <form action="/login" autocomplete="off" method="post">
+        <div class="form-group center">
+            <input name="username" type="text" placeholder="registeration number" autofocus>
+        </div>
+        <div class="form-group center">
+            <input name="password" type="text" placeholder="password" autofocus>
+        </div>
+        <div>
+            <div class="text-center">
+                <button type="submit" name="submit" value="submit" class="btn btn-primary">Log In</button>
+            </div>
+        </div>
+        <p class="small text-center text-muted">Note: If you aren't registered, register first.</p>
+    </form>
+    <br>
+
+{% endblock %}

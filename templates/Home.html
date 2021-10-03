@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+    {% block title %}
+        Homepage
+    {% endblock %}
+
+{% block main %} 
+    <div class="hero">
+        <div class="hero-text center">
+            <h1>Welcome to CMS</h1>
+            <p>Advanced student management system</p>
+        </div>
+    </div>
+    <div>
+    <h2 class="center">ATTENDANCE SYSTEM</h2>
+    <br>
+    <form action="/attendance" method='post'>
+        <div class="form-group center">
+            <input name="first_name" type="text" placeholder="First Name" autofocus>
+        </div>
+        <div class="form-group center">
+            <input name="last_name" type="text" placeholder="Last_name">
+        </div>
+        <div class="form-group center">
+            <input name="registeration_number" type="text" placeholder="Registeration Number">
+            <select name="class" type="select">
+                <option value={{user_class}}>{{user_class}}</option>
+        </div>
+        <br>
+        <div>
+          <input name="submit" type="submit" value="Mark" class="btn btn-primary">
+        </div>
+        <br>
+    </form>
+    </div>
+    <!-- creating a table for previos records:-->
+    <br>
+    <h2 class="center">PREVIOUS RECORDS</h2>
+    <br>
+    <div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">First_Name</th>
+                <th scope="col">Last_Name</th>
+                <th scope="col">REG</th>
+                <th scope="col">DATE TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for attend in prev_attend %}
+              <tr>
+                <th scope="row">{{attend["first_name"]}}</th>
+                <td>{{attend["last_name"]}}</td>
+                <td>{{attend["registeration_number"]}}</td>
+                <td>{{attend["date"]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    <br>
+    <div>
+      <form action="/csv" class="center" method="post">
+        <button type="submit" value="submit" class="btn btn-primary center">Download csv</button>
+      </form>
+    </div>
+    <br>
+
+{% endblock %}

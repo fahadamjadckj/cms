@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+    {% block title %}
+        Register
+    {% endblock %}
+
+{% block main %} 
+    <br>
+    <h2 class="center">Register</h2>
+    <br>
+    <form action="/register" autocomplete="off" method="post">
+        <div class="form-group center">
+            <input name="first_name" type="text" placeholder="First name" autofocus>
+            <input name="last_name" type="text" placeholder="Last name">
+        </div>
+        <div class="form-group center">
+            <input name="email" type="text" placeholder="Email" autofocus>
+        </div>
+        <div class="form-group center">
+            <select name="class" type="select" placeholder="class/course">
+                <option value="class" disabled selected>class</option>
+                {% for class in classes %} 
+
+                <option value={{class}}>{{class}}</option>
+                
+                {% endfor %}
+        </div>
+        <br>
+        <div class="form-group center">
+            <input name="username" type="text" placeholder="Registeration number" autofocus>
+        </div>
+        <div class="form-group center">
+            <input name="password" type="text" placeholder="Password">
+        </div>
+        <div class="form-group center">
+            <label for="Student">Student</label>
+            <input name="student" type="checkbox">
+        </div>
+        <div>
+            <div class="text-center">
+                <button type="submit" name="submit" value="submit" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </form>
+    <br>
+{% endblock %}

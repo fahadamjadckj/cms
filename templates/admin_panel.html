@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+    {% block title %}
+        ADMIN
+    {% endblock %}
+
+{% block main %} 
+    <div class="hero">
+        <div class="hero-text center">
+            <h1>Admin Panel</h1>
+            <p>Advanced student management system</p>
+        </div>
+    </div>
+    <form action="/logoutadmin" class="form-group center">
+        <input type=submit value="Logout" class="btn btn-primary">
+    </form>
+    <div>
+    <h2 class="center">NOTICE PANEL</h2>
+    <br>
+    <form action="/addnotice" autocomplete="off" method="post" id="addnotice">
+        <div class="form-group center">
+            <select name="class" type="select" placeholder="class/course">
+                <option value="class" disabled selected>class</option>
+                {% for class in classes %} 
+
+                <option value={{class}}>{{class}}</option>
+                
+                {% endfor %}
+        </div>
+        <br>
+        <div class="form-group center">
+            <input name="link" type="text" placeholder="Link" autofocus>
+        </div>
+        <div class="form-group center">
+            <input name="issue_date" type="text" placeholder="Issue date" autofocus>
+            <button type="submit" name="submit" value="submit" class="btn btn-primary">Publish</button>
+        </div>
+    </form>
+    <textarea rows="5" cols="50" name="summary" form="addnotice" id="notice" placeholder="Summary of notice:"></textarea>
+    <div>
+        <br>
+        <h2 class="center">ADD CLASSES</h2>
+        <form action="/addclass" autocomplete="off" method="post">
+            <br>
+            <div class="form-group center">
+                <input name="class_name" type="text" placeholder="Class/course" autofocus>
+            </div>
+            <div class="form-group center">
+                <button type="submit" name="submit" value="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+    <section>
+        <h3 class="center">Download Attendance</h3>
+        <form action="/admincsv" class="center" method="post">
+            <select name="class" type="select" placeholder="class/course">
+                <option value="class" disabled selected>class</option>
+                {% for class in classes %} 
+
+                <option value={{class}}>{{class}}</option>
+                
+                {% endfor %}
+            <div>
+                <input type="submit" value="Download" class="btn btn-primary">
+            </div>
+        </form>
+    </section>
+    <br>
+    
+{% endblock %}
